@@ -6,6 +6,7 @@ const ContactForm = () => {
   const { register, errors, handleSubmit } = useForm({
     mode: "onBlur",
   });
+
   const onSubmit = (data) => {
     setData(data);
   };
@@ -16,6 +17,7 @@ const ContactForm = () => {
         <div>
           <label htmlFor="firstName">First Name*</label>
           <input
+            data-testid="firstNameInput"
             name="firstName"
             placeholder="Edd"
             ref={register({ required: true, maxLength: 3 })}
@@ -28,6 +30,7 @@ const ContactForm = () => {
         <div>
           <label htmlFor="lastName">Last Name*</label>
           <input
+            data-testid="lastNameInput"
             id="lastName"
             name="lastName"
             placeholder="Burke"
@@ -39,13 +42,13 @@ const ContactForm = () => {
         </div>
 
         <div>
-          <label htmlFor="email">
-            Email*
-          </label>
-          <input name="email" 
+          <label htmlFor="email">Email*</label>
+          <input
+            data-testid="emailInput"
+            name="email"
             id="lastName"
             placeholder="bluebill1049@hotmail.com"
-            ref={register({ required: true })} 
+            ref={register({ required: true })}
           />
           {errors.email && (
             <p>Looks like there was an error: {errors.email.type}</p>
@@ -54,9 +57,10 @@ const ContactForm = () => {
         <div>
           <label htmlFor="message">Message</label>
           <textarea
+            data-testid="messageInput"
             name="message"
-            id="message" 
-            ref={register({ required: false })} 
+            id="message"
+            ref={register({ required: false })}
           />
         </div>
         {data && (
